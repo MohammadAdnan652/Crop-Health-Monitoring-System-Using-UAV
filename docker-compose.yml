@@ -1,0 +1,13 @@
+services:
+  uav-app:
+    build: .
+    ports:
+      - "8080:5000"
+    volumes:
+      - ./uploads:/app/uploads
+      - ./processed:/app/processed
+      - ./images_nadir_RGB:/app/images_nadir_RGB
+    environment:
+      - FLASK_ENV=development
+      - MAX_CONTENT_LENGTH=16777216
+    restart: unless-stopped 
